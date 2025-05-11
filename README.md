@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -63,6 +62,14 @@
       font-size: 14px;
       color: #ccc;
     }
+    .thank-you {
+      display: none;
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: #1a1a1a;
+      padding: 30px;
+      border-radius: 10px;
+    }
   </style>
 </head>
 <body>
@@ -73,10 +80,7 @@
   </header>
 
   <div class="container">
-    <form action="https://formsubmit.co/lekacalcadoscg@gmail.com" method="POST">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://obrigado.netlify.app/">
-      
+    <form id="cadastroForm">
       <label for="nome">Nome completo:</label>
       <div class="desc">Para que a gente possa te chamar pelo nome certo 🧡</div>
       <input type="text" id="nome" name="nome" required>
@@ -108,10 +112,24 @@
       <input type="submit" value="Cadastrar">
     </form>
 
+    <div class="thank-you" id="thankYouMessage">
+      <h1>🎉 Obrigado pelo cadastro!</h1> 
+      <p>Agora você faz parte do nosso grupo VIP da <strong>Leka Calçados e Confecções</strong>! 👟🧡</p>
+      <p>Fique de olho nas novidades, você vai receber ofertas incríveis pelo WhatsApp!</p>
+    </div>
+
     <div class="footer">
       Seus dados estão seguros com a gente! 🔒
     </div>
   </div>
+
+  <script>
+    document.getElementById('cadastroForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Impede o envio real
+      this.style.display = 'none'; // Oculta o formulário
+      document.getElementById('thankYouMessage').style.display = 'block'; // Mostra mensagem
+    });
+  </script>
 
 </body>
 </html>
